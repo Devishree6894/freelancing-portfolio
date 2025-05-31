@@ -1,4 +1,4 @@
-import { FaRocket, FaLeaf, FaBriefcase, FaPalette, FaGem, FaBook, FaRobot, FaRegLightbulb } from 'react-icons/fa';
+import { FaRocket, FaLeaf, FaBriefcase, FaPalette, FaGem, FaBook, FaRobot, FaRegLightbulb, FaSpaceShuttle } from 'react-icons/fa';
 
 const templates = [
   {
@@ -201,45 +201,45 @@ const templates = [
     )
   },
   {
-    id: 'modern2',
+    id: 'futuristic',
     name: 'Modern',
-    icon: <FaRegLightbulb className="text-yellow-400 text-3xl mb-2" />,
-    description: 'Minimal, clean, blue/gray palette, and modern sans-serif fonts.',
+    icon: <FaRegLightbulb className="text-black text-3xl mb-2" />,
+    description: 'Modern, tech-focused design with animated elements and soft pink accents.',
     preview: null,
     defaultValues: {
       hero: {
-        title: 'Modern Portfolio',
-        subtitle: 'Sleek & Professional',
+        title: 'Welcome to the Future',
+        subtitle: 'Innovative Developer & Creator',
         background: {
           type: 'gradient',
           gradient: {
-            from: '#3b82f6',
-            to: '#e0e7ef',
-            direction: '135deg'
+            from: '#FFC2D1',
+            to: '#FFC2D1',
+            direction: 'to bottom'
           }
         },
-        ctaText: 'See My Work'
+        ctaText: 'Explore Projects'
       },
       customization: {
-        primaryColor: '#3b82f6',
-        secondaryColor: '#e0e7ef',
-        fontFamily: 'Inter, sans-serif',
-        layout: 'modern',
+        primaryColor: '#FFC2D1',
+        secondaryColor: '#FFC2D1',
+        fontFamily: 'Inter',
+        layout: 'futuristic',
         spacing: 'comfortable'
       }
     },
     jsxPreview: (
-      <div className="rounded-2xl border-2 border-indigo-300 shadow-xl bg-gradient-to-br from-[#a78bfa] via-[#6366f1] to-[#f0fdfa] p-4 flex flex-col items-center" style={{ fontFamily: 'Poppins, Inter, sans-serif' }}>
-        <div className="w-16 h-16 rounded-full bg-white/80 flex items-center justify-center mb-2 border-4 border-indigo-200 shadow-lg">
-          <FaRegLightbulb className="text-yellow-400 text-3xl" />
+      <div className="rounded-2xl border-2 border-[#FFC2D1] shadow-xl bg-[#FFC2D1] p-4 flex flex-col items-center">
+        <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-2 border-2 border-[#FFC2D1]">
+          <FaRegLightbulb className="text-black text-3xl" />
         </div>
-        <div className="w-full h-4 bg-white/60 rounded mb-2" />
-        <div className="w-3/4 h-3 bg-white/40 rounded mb-4" />
-        <div className="flex gap-2 w-full">
-          <div className="h-8 w-1/2 bg-white/50 rounded" />
-          <div className="h-8 w-1/2 bg-white/30 rounded" />
+        <div className="w-full h-4 bg-white rounded mb-2" />
+        <div className="w-3/4 h-3 bg-black/10 rounded mb-4" />
+        <div className="grid grid-cols-2 gap-2 w-full">
+          <div className="h-8 bg-white rounded" />
+          <div className="h-8 bg-white rounded" />
         </div>
-        <div className="mt-4 w-3/4 h-2 bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400 rounded-full opacity-70" />
+        <div className="mt-4 w-full h-1 bg-black/10 rounded-full" />
       </div>
     )
   }

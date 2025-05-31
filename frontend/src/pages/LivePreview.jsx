@@ -8,6 +8,8 @@ import MinimalTemplate from '../components/templates/MinimalTemplate';
 import ProfessionalTemplate from '../components/templates/ProfessionalTemplate';
 import DarkTemplate from '../components/templates/DarkTemplate';
 import ElegantTemplate from '../components/templates/ElegantTemplate';
+import FuturisticTemplate from '../components/templates/FuturisticTemplate';
+import { FaDownload } from 'react-icons/fa';
 
 function LivePreview() {
   const [portfolio, setPortfolio] = useState(null);
@@ -66,6 +68,23 @@ function LivePreview() {
     }
   }, [username]);
 
+  const handleDownload = () => {
+    if (!portfolioRef.current) return;
+    const htmlContent = portfolioRef.current.innerHTML;
+    const tailwindCdn = `<link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">`;
+    const blob = new Blob([
+      `<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Portfolio</title>${tailwindCdn}</head><body style='margin:0;'>${htmlContent}</body></html>`
+    ], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'portfolio.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -100,20 +119,45 @@ function LivePreview() {
     );
   }
 
-  // Render the correct template
+  let templateComponent;
   switch (portfolio.template) {
     case 'minimal':
-      return <MinimalTemplate portfolio={portfolio} projects={projects} />;
+      templateComponent = <MinimalTemplate portfolio={portfolio} projects={projects} />;
+      break;
     case 'professional':
-      return <ProfessionalTemplate portfolio={portfolio} projects={projects} />;
+      templateComponent = <ProfessionalTemplate portfolio={portfolio} projects={projects} />;
+      break;
     case 'dark':
-      return <DarkTemplate portfolio={portfolio} projects={projects} />;
+      templateComponent = <DarkTemplate portfolio={portfolio} projects={projects} />;
+      break;
     case 'elegant':
-      return <ElegantTemplate portfolio={portfolio} projects={projects} />;
+      templateComponent = <ElegantTemplate portfolio={portfolio} projects={projects} />;
+      break;
+    case 'futuristic':
+      templateComponent = <FuturisticTemplate portfolio={portfolio} projects={projects} />;
+      break;
     case 'modern':
-                default:
-      return <ModernTemplate portfolio={portfolio} projects={projects} />;
+    default:
+      templateComponent = <ModernTemplate portfolio={portfolio} projects={projects} />;
+      break;
   }
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Floating Download Button */}
+      <button
+        onClick={handleDownload}
+        className="fixed top-20 right-8 z-50 flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 via-pink-400 to-blue-400 hover:from-blue-600 hover:to-pink-500 text-white font-bold rounded-full shadow-2xl transition-all text-lg border-4 border-white/80"
+        style={{ boxShadow: '0 8px 32px 0 rgba(80, 36, 143, 0.18)' }}
+      >
+        <FaDownload className="text-xl" />
+        Download as HTML
+      </button>
+      <div ref={portfolioRef} className="max-w-7xl mx-auto bg-white rounded shadow overflow-x-auto mt-0">
+        {templateComponent}
+      </div>
+    </div>
+  );
 }
 
 export default LivePreview; 

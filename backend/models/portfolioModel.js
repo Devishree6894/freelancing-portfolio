@@ -108,7 +108,7 @@ const portfolioSchema = mongoose.Schema(
     },
     template: {
       type: String,
-      enum: ['modern', 'minimal', 'professional', 'elegant', 'dark'],
+      enum: ['modern', 'minimal', 'professional', 'elegant', 'dark', 'futuristic'],
       default: 'modern'
     },
     hero: {
@@ -241,7 +241,7 @@ const portfolioSchema = mongoose.Schema(
       },
       layout: {
         type: String,
-        enum: ['classic', 'modern', 'minimal', 'professional', 'dark'],
+        enum: ['classic', 'modern', 'minimal', 'professional', 'dark','elegant','futuristic'],
         default: 'modern'
       },
       spacing: {

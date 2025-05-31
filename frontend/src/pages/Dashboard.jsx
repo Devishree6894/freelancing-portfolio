@@ -6,6 +6,7 @@ import { getPortfolio, createPortfolio } from '../features/portfolio/portfolioSl
 import { toast } from 'react-toastify';
 import { FaRegClone, FaFolderOpen, FaEye, FaRocket, FaBriefcase, FaGem, FaBook } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { MdMemory } from 'react-icons/md';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -235,7 +236,7 @@ function Dashboard() {
                   {/* Certifications card */}
                   <div className="w-2/3 bg-blue-50 rounded-xl shadow mt-1 flex flex-col items-center py-1 px-2 border border-blue-100">
                     <div className="text-[0.6rem] font-semibold text-blue-700 mb-0.5">Certifications</div>
-                    <div className="text-[0.55rem] text-blue-500 text-center">csajjfa</div>
+                    <div className="text-[0.55rem] text-blue-500 text-center">your certifications</div>
                   </div>
                 </div>
                 <div className="p-6">
@@ -286,14 +287,67 @@ function Dashboard() {
                   <div className="w-2/3 bg-[#232b36] rounded-xl shadow mt-1 flex flex-col items-center py-1 px-2 border border-gray-700">
                     <div className="text-[0.6rem] font-semibold text-blue-300 mb-0.5">Skills</div>
                     <div className="flex gap-1 flex-wrap justify-center">
-                      <span className="px-2 py-0.5 rounded-full bg-blue-900 text-blue-200 text-[0.55rem] font-semibold">skills</span>
-                      <span className="px-2 py-0.5 rounded-full bg-blue-900 text-blue-200 text-[0.55rem] font-semibold">wca</span>
+                      <span className="px-2 py-0.5 rounded-full bg-blue-900 text-blue-200 text-[0.55rem] font-semibold">your skills</span>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Dark</h3>
                   <p className="text-gray-600 text-sm">Dark, modern theme with clear sections and professional look.</p>
+                </div>
+              </div>
+
+              {/* Elegant Template */}
+              <div className="w-80 flex-shrink-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 group">
+                {/* Mini-preview for Elegant */}
+                <div className="h-48 relative overflow-hidden flex flex-col items-center justify-center p-3" style={{ background: '#f5f0eb' }}>
+                  {/* Main hero card */}
+                  <div className="w-11/12 mx-auto flex flex-col items-center py-3 px-2 mb-2">
+                    <div className="text-[1.2rem] font-bold text-gray-900 mb-1 text-center whitespace-nowrap font-serif tracking-wide" style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
+                      ELEGANT PORTFOLIO
+                    </div>
+                    <div className="text-[0.7rem] italic text-gray-700 mb-2 text-center whitespace-nowrap font-serif" style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
+                      Refined. Polished. Professional.
+                    </div>
+                  </div>
+                  {/* About Me card */}
+                  <div className="w-2/3 bg-white/90 rounded-xl shadow mt-1 flex flex-col items-center py-1 px-2 border border-gray-200">
+                    <div className="text-[0.6rem] font-semibold text-gray-700 mb-0.5 font-serif">About Me</div>
+                    <div className="text-[0.55rem] text-gray-500 text-center font-serif">Add your bio here...</div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 font-serif">Elegant</h3>
+                  <p className="text-gray-600 text-sm">Sophisticated, serif fonts, soft gradients, and subtle shadows for a refined look.</p>
+                </div>
+              </div>
+
+              {/* Modern Template */}
+              <div className="w-80 flex-shrink-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 group">
+                {/* Mini-preview for Modern */}
+                <div className="h-48 relative overflow-hidden flex flex-col items-center justify-center p-0" style={{ background: 'black' }}>
+                  {/* Pink accent shape */}
+                  <div className="absolute top-0 left-0 w-full h-16" style={{ background: '#FFC2D1', borderBottomLeftRadius: '60% 100%', borderBottomRightRadius: '60% 100%' }} />
+                  <div className="relative z-10 w-full flex flex-col items-center justify-center pt-8">
+                    <div className="text-[1.1rem] font-bold text-white mb-1 text-center whitespace-nowrap" style={{ fontFamily: 'Inter, serif' }}>
+                      Welcome to the Future
+                    </div>
+                    <div className="text-[0.7rem] text-[#FAA5BB] mb-2 text-center whitespace-nowrap font-semibold">
+                      Innovative Developer & Creator
+                    </div>
+                    <div className="flex gap-2 mt-2">
+                      <div className="px-3 py-1 rounded bg-[#FFC2D1] text-black text-[0.7rem] font-semibold shadow" style={{ background: '#FFC2D1' }}>
+                        Explore Projects
+                      </div>
+                      <div className="px-3 py-1 rounded border border-[#FFC2D1] text-[#FFC2D1] text-[0.7rem] font-semibold bg-transparent">
+                        Contact Me
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Modern</h3>
+                  <p className="text-gray-600 text-sm">Modern, bold black and pink design with strong call-to-action and clean layout.</p>
                 </div>
               </div>
             </div>
