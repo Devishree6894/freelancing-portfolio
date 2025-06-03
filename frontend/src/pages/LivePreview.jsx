@@ -153,7 +153,7 @@ function LivePreview() {
         <FaDownload className="text-xl" />
         Download as HTML
       </button>
-      <div ref={portfolioRef} className="max-w-7xl mx-auto bg-white rounded shadow overflow-x-auto mt-0">
+      <div ref={portfolioRef}>
         {templateComponent}
       </div>
     </div>

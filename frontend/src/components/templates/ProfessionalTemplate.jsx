@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 function ProfessionalTemplate({ portfolio, projects }) {
   const { customization = {}, hero = {}, about = {}, contact = {}, experience = [], certifications = [] } = portfolio;
@@ -8,13 +8,21 @@ function ProfessionalTemplate({ portfolio, projects }) {
     spacious: 'py-32'
   }[customization.spacing || 'comfortable'];
 
+  // Ref for contact section
+  const contactRef = useRef(null);
+  const handleContactMe = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div style={{ fontFamily: customization.fontFamily, background: '#f3f4f6', color: '#1e293b' }}>
       {/* Hero Section */}
       <section className="min-h-[70vh] flex flex-col justify-center items-center px-4 bg-gradient-to-br from-blue-100 to-white">
         <h1 className="text-5xl font-extrabold mb-3" style={{ color: customization.primaryColor }}>{hero.title}</h1>
         <p className="text-2xl mb-6" style={{ color: customization.secondaryColor }}>{hero.subtitle}</p>
-        <button className="px-8 py-3 rounded-lg font-semibold shadow" style={{ backgroundColor: customization.primaryColor, color: '#fff' }}>{hero.ctaText}</button>
+        <button className="px-8 py-3 rounded-lg font-semibold shadow" style={{ backgroundColor: customization.primaryColor, color: '#fff' }} onClick={handleContactMe}>{hero.ctaText}</button>
       </section>
 
       {/* Projects Section */}
@@ -95,7 +103,7 @@ function ProfessionalTemplate({ portfolio, projects }) {
 
       {/* Contact Section */}
       {contact && (
-        <section className={`${spacing} bg-blue-50`}> 
+        <section ref={contactRef} className={`${spacing} bg-blue-50`}> 
           <div className="max-w-5xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-center" style={{ color: customization.primaryColor }}>Get in Touch</h2>
             <div className="flex flex-wrap justify-center gap-8">

@@ -19,7 +19,6 @@ function ElegantTemplate({ portfolio, projects }) {
           <div className="text-lg md:text-2xl italic mb-4 tracking-wide">{hero.subtitle || 'Your Role'}</div>
           <div className="max-w-2xl text-center text-base md:text-lg mb-6 opacity-80">{hero.description || 'Presentations are communication tools that can be used as demonstrations, lectures, speeches, reports, and more.'}</div>
           <div className="flex gap-4 items-center mb-2">
-            <span className="px-4 py-1 border border-gray-400 rounded-full bg-white/80 text-sm font-medium">{about.title || 'Creator'}</span>
             {contact.email && <span className="text-sm opacity-70">{contact.email}</span>}
           </div>
         </div>
