@@ -174,7 +174,7 @@ const portfolioSchema = mongoose.Schema(
       email: {
         type: String,
         required: true,
-        match: [/\S+@\S+\.\S+/, 'Valid email required']
+        match: [/^[a-zA-Z0-9._%+-]+@gmail\.com$/, 'Valid Gmail address required (must end with @gmail.com)']
       },
       linkedin: {
         type: String,

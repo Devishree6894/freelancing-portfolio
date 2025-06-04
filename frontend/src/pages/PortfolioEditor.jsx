@@ -30,7 +30,7 @@ function PortfolioEditor() {
       title: 'About Me',
       bio: '',
       skills: [],
-      image: ''
+      // image: ''
     },
     experience: [],
     certifications: [],
@@ -377,12 +377,18 @@ function PortfolioEditor() {
     }
   };
 
-  const handleTemplateSelect = (templateValues, templateId) => {
+  const handleTemplateSelect = async (templateValues, templateId) => {
+    // Update the form data with the new template values
     setFormData(prevState => ({
       ...prevState,
       hero: {
         ...prevState.hero,
-        ...templateValues.hero
+        // Only set hero fields from template if they are empty
+        title: prevState.hero.title || templateValues.hero.title,
+        subtitle: prevState.hero.subtitle || templateValues.hero.subtitle,
+        background: prevState.hero.background || templateValues.hero.background,
+        ctaText: prevState.hero.ctaText || templateValues.hero.ctaText,
+        ctaLink: prevState.hero.ctaLink || templateValues.hero.ctaLink
       },
       customization: {
         ...prevState.customization,
@@ -390,13 +396,37 @@ function PortfolioEditor() {
       },
       template: templateId
     }));
-    // Scroll to customize section if modern is selected
-    if (templateId === 'modern') {
-      setTimeout(() => {
-        if (customizeModernRef.current) {
-          customizeModernRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
+
+    // Save the changes immediately
+    try {
+      await dispatch(updatePortfolio({
+        ...formData,
+        hero: {
+          ...formData.hero,
+          // Only set hero fields from template if they are empty
+          title: formData.hero.title || templateValues.hero.title,
+          subtitle: formData.hero.subtitle || templateValues.hero.subtitle,
+          background: formData.hero.background || templateValues.hero.background,
+          ctaText: formData.hero.ctaText || templateValues.hero.ctaText,
+          ctaLink: formData.hero.ctaLink || templateValues.hero.ctaLink
+        },
+        customization: {
+          ...formData.customization,
+          ...templateValues.customization
+        },
+        template: templateId
+      })).unwrap();
+      
+      // Scroll to customize section if modern is selected
+      if (templateId === 'modern') {
+        setTimeout(() => {
+          if (customizeModernRef.current) {
+            customizeModernRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    } catch (error) {
+      toast.error('Failed to update template. Please try again.');
     }
   };
 
@@ -521,16 +551,16 @@ function PortfolioEditor() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    {/* <label className="block text-sm font-medium text-gray-700 mb-1">
                       Profile Image URL
-                    </label>
-                    <input
+                    </label> */}
+                    {/* <input
                       type="text"
                       value={formData.about.image}
                       onChange={(e) => handleChange('about', 'image', e.target.value)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                       placeholder="Enter the URL of your profile image"
-                    />
+                    /> */}
                   </div>
                 </div>
               </section>

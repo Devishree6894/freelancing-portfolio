@@ -42,6 +42,8 @@ function DarkTemplate({ portfolio, projects }) {
           <div className="flex flex-wrap justify-center gap-8 text-gray-400 text-lg mb-2">
             {contact.phone && <span className="flex items-center gap-1"><MdCall className="text-base" />{contact.phone}</span>}
             {contact.email && <span className="flex items-center gap-1"><MdMail className="text-base" />{contact.email}</span>}
+            {contact.github && <a href={contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-400 transition"><FaGithub className="text-base" />GitHub</a>}
+            {contact.linkedin && <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-400 transition"><FaLinkedin className="text-base" />LinkedIn</a>}
             {contact.website && <span className="flex items-center gap-1"><FaGlobe className="text-base" /><a href={contact.website} target="_blank" rel="noopener noreferrer" className="hover:underline">{contact.website.replace(/^https?:\/\//, '')}</a></span>}
           </div>
           {contact.location && (
@@ -111,7 +113,22 @@ function DarkTemplate({ portfolio, projects }) {
                   {projects.map((project, idx) => (
                     <div key={idx} className="bg-gray-800/80 rounded-xl p-5 border border-blue-900/30 shadow-md transition-all duration-200 hover:scale-[1.025] hover:border-blue-500/60 hover:shadow-blue-900/30">
                       <div className="font-semibold text-white text-lg mb-2">{project.title}</div>
-                      <div className="text-gray-300 text-lg">{project.description}</div>
+                      <div className="text-gray-300 text-lg mb-2">{project.description}</div>
+                      {project.technologies && project.technologies.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-2">
+                          {project.technologies.map((tech, i) => (
+                            <span key={i} className="px-2 py-0.5 text-xs rounded bg-blue-900/60 border border-blue-700 text-blue-200 shadow-sm">{tech}</span>
+                          ))}
+                        </div>
+                      )}
+                      <div className="flex gap-4">
+                        {project.githubUrl && (
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline hover:text-blue-200 text-base">GitHub</a>
+                        )}
+                        {project.liveUrl && (
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline hover:text-blue-200 text-base">Live Demo</a>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -128,7 +145,10 @@ function DarkTemplate({ portfolio, projects }) {
                     <div key={idx} className="bg-gray-900/80 rounded-xl p-4 border border-blue-900/30 shadow-sm">
                       <div className="font-semibold text-white text-lg mb-1">{cert.name}</div>
                       <div className="text-blue-200 text-lg mb-1">{cert.issuer}</div>
-                      <div className="text-gray-400 text-lg">{cert.issueDate ? new Date(cert.issueDate).toLocaleDateString() : ''}</div>
+                      <div className="text-gray-400 text-lg mb-1">{cert.issueDate ? new Date(cert.issueDate).toLocaleDateString() : ''}</div>
+                      {cert.description && (
+                        <div className="text-gray-300 text-base mb-1">{cert.description}</div>
+                      )}
                     </div>
                   ))}
                 </div>
