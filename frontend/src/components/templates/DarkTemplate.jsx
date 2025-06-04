@@ -34,9 +34,6 @@ function DarkTemplate({ portfolio, projects }) {
       <div className="max-w-6xl w-full mx-auto mt-6 rounded-3xl shadow-2xl p-12 pb-16 border border-blue-900/40 bg-white/10 backdrop-blur-md z-10 animate-fadein text-lg md:text-xl" style={{ boxShadow: '0 8px 40px 0 rgba(0,0,0,0.45)' }}>
         {/* Avatar, name, subtitle, contact row */}
         <div className="flex flex-col items-center">
-          {about.image && (
-            <img src={about.image} alt="Profile" className="w-28 h-28 rounded-full border-4 border-[#232b36] shadow-xl mb-4 object-cover transition-all duration-300 hover:scale-105" style={{ boxShadow: '0 4px 24px 0 #2563eb55' }} />
-          )}
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide mb-2 text-white uppercase drop-shadow-lg">{hero.title || 'Your Name'}</h1>
           <h2 className="text-2xl md:text-3xl font-medium text-blue-200 mb-5 tracking-widest drop-shadow">{hero.subtitle || 'Your Role'}</h2>
           <div className="flex flex-wrap justify-center gap-8 text-gray-400 text-lg mb-2">

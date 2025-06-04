@@ -439,28 +439,28 @@ function PortfolioEditor() {
   }
 
   return (
-    <div className="min-h-screen w-full px-4 py-8" style={{ background: 'linear-gradient(120deg, #f3e8ff 0%, #ede9fe 100%)' }}>
+    <div className="min-h-screen w-full px-2 sm:px-4 py-6 sm:py-8" style={{ background: 'linear-gradient(120deg, #f3e8ff 0%, #ede9fe 100%)' }}>
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="flex justify-between items-center mb-8">
+        <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-2 sm:gap-0">
             <h2 className="text-2xl font-bold">
               {portfolio ? 'Edit Portfolio' : 'Create Your Portfolio'}
             </h2>
           </div>
 
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-2 sm:gap-0">
             <h1 className="text-3xl font-bold">Portfolio Editor</h1>
-            <div className="space-x-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto">
               <button
                 onClick={handlePreview}
-                className="px-4 py-2 text-white rounded-lg transition duration-300"
+                className="w-full sm:w-auto px-4 py-2 text-white rounded-lg transition duration-300"
                 style={{ backgroundColor: '#4F3B78', hover: { backgroundColor: '#6B4F9E' } }}
               >
                 Preview
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 text-white rounded-lg transition duration-300"
+                className="w-full sm:w-auto px-4 py-2 text-white rounded-lg transition duration-300"
                 style={{ backgroundColor: '#4F3B78', hover: { backgroundColor: '#6B4F9E' } }}
               >
                 Save Changes
@@ -469,12 +469,12 @@ function PortfolioEditor() {
           </div>
 
           {/* Navigation Tabs */}
-          <div className="flex border-b border-gray-200 mb-8">
+          <div className="flex overflow-x-auto border-b border-gray-200 mb-6 sm:mb-8 hide-scrollbar">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 font-medium text-sm transition duration-300 ${
+                className={`px-4 py-2 font-medium text-sm transition duration-300 whitespace-nowrap ${
                   activeTab === tab
                     ? 'border-b-2 text-gray-900'
                     : 'text-gray-500 hover:text-gray-700'
@@ -1101,6 +1101,15 @@ function PortfolioEditor() {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }
