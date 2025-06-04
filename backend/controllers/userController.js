@@ -234,7 +234,7 @@ module.exports = {
   loginUser,
   getMe,
   updateProfile,
-  updateAvatar,
+  //updateAvatar,
   updateSocialLinks,
   updateSkills,
   uploadResume,
